@@ -3,7 +3,7 @@
 <suite name="API Test Suite">
     <test name="API Tests">
         <classes>
-            <class name="dev.angelicab7.rickandmorty.app.CharactersTest"/>
+            <class name="dev.angelicab7.rickandmorty.app.API.CharactersTest"/>
         </classes>
     </test>
 </suite>

@@ -1,9 +1,9 @@
-package dev.angelicab7.rickandmorty.app.steps;
+package dev.angelicab7.rickandmorty.app.Web.steps;
 
 import com.microsoft.playwright.Page;
-import dev.angelicab7.rickandmorty.app.hooks.Hooks;
-import dev.angelicab7.rickandmorty.app.pages.CharactersPage;
-import dev.angelicab7.rickandmorty.app.pages.HomePage;
+import dev.angelicab7.rickandmorty.app.Web.hooks.Hooks;
+import dev.angelicab7.rickandmorty.app.Web.pages.CharactersPage;
+import dev.angelicab7.rickandmorty.app.Web.pages.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.slf4j.Logger;

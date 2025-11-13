@@ -1,4 +1,4 @@
-package dev.angelicab7.rickandmorty.app.pages;
+package dev.angelicab7.rickandmorty.app.Web.pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;

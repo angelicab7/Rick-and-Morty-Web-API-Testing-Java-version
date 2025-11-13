@@ -1,4 +1,4 @@
-package dev.angelicab7.rickandmorty.app;
+package dev.angelicab7.rickandmorty.app.API;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -9,10 +9,10 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.*;
 
-public class EpisodesTest {
+public class LocationsTest {
     private static final String BASE_URL = "https://rickandmortyapi.com/api";
-    private static final int EPISODE_ID = 28;
-    private static final String EPISODE_NAME = "Pilot";
+    private static final int LOCATION_ID = 7;
+    private static final String LOCATION_TYPE = "Planet";
 
     @BeforeClass
     public void setup() {
@@ -20,26 +20,27 @@ public class EpisodesTest {
     }
 
     @Test
-    public void testGetEpisodesHealthcheck() {
-        Response response = get("/episode");
+    public void testGetLocationsHealthcheck() {
+        Response response = get("/location");
         assertEquals(response.getStatusCode(), 200);
     }
     @Test
-    public void testGetSingleEpisode() {
+    public void testGetSingleLocation() {
+
         given()
                 .when()
-                .get("/episode/" + EPISODE_ID)
+                .get("/location/" + LOCATION_ID)
                 .then()
                 .statusCode(200)
-                .body("id", equalTo(28))
+                .body("id", equalTo(7))
                 .body("name", notNullValue());
     }
 
     @Test
-    public void testGetMultipleEpisodes() {
+    public void testGetMultipleLocations() {
         given()
                 .when()
-                .get("/episode/1,2,3")
+                .get("/location/1,2,3")
                 .then()
                 .statusCode(200)
                 .body("id", hasItems(1,2,3))
@@ -47,15 +48,15 @@ public class EpisodesTest {
     }
 
     @Test
-    public void testFilterEpisodes() {
+    public void testFilterLocations() {
         given().
-                queryParam("name", EPISODE_NAME).
-                when().
-                get("/episode/").
-                then().
-                body("info.count", equalTo(1)).
-                body("results", hasSize(1)).
-                statusCode(200);
+            queryParam("name", LOCATION_TYPE).
+        when().
+            get("/location/").
+        then().
+            body("info.count", equalTo(11)).
+            body("results", hasSize(11)).
+            statusCode(200);
     }
 
 }

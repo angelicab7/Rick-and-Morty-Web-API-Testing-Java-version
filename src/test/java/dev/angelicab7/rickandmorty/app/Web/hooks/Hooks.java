@@ -1,4 +1,4 @@
-package dev.angelicab7.rickandmorty.app.hooks;
+package dev.angelicab7.rickandmorty.app.Web.hooks;
 
 import com.microsoft.playwright.*;
 import io.cucumber.java.After;

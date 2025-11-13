@@ -1,4 +1,4 @@
-package dev.angelicab7.rickandmorty.app;
+package dev.angelicab7.rickandmorty.app.API;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
