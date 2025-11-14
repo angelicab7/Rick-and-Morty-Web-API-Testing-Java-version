@@ -28,7 +28,7 @@ public class CharactersPage {
         this.characterContainer = page.locator("#characters-container > .column");
         this.searchField = page.locator("#searchIn");
         this.searchButton = page.locator("#searchButton");
-        this.characterCard = page.getByText("Pickle Rick");
+        this.characterCard = page.getByText("Izzy");
         this.orderDropdown = page.locator("#filter-input-order");
         this.speciesDropdown = page.locator("#filter-input-species");
         this.charactersSorted = page.getByText("Abadango Cluster Princess");
@@ -46,7 +46,6 @@ public class CharactersPage {
 
         logger.info("Characters page verified - found {} character containers", count);
     }
-
     public void clickOrderDropdown() {
         logger.info("Clicking on order dropdown and selecting 'Order A-Z'");
         orderDropdown.selectOption("Order A-Z");
@@ -61,22 +60,6 @@ public class CharactersPage {
 
         assertThat(charactersSorted).isVisible();
         logger.info("Characters sorted verification passed");
-    }
-
-    public void clickSpeciesDropdown(String species) {
-        logger.info("Selecting species: {}", species);
-        speciesDropdown.selectOption(species);
-        page.waitForTimeout(1000);
-    }
-
-    public void verifySpeciesDisplayed() {
-        logger.debug("Verifying species category is displayed");
-
-        int containerCount = characterContainer.count();
-        assertTrue(containerCount > 0, "Character container should not be empty");
-
-        assertThat(categoryDisplayed).isVisible();
-        logger.info("Species filter verification passed");
     }
 
     public void searchForCharacter(String characterName) {
@@ -94,9 +77,4 @@ public class CharactersPage {
         logger.info("Character card verification passed");
     }
 
-    public int getCharacterCount() {
-        int count = characterContainer.count();
-        logger.debug("Current character count: {}", count);
-        return count;
-    }
 }

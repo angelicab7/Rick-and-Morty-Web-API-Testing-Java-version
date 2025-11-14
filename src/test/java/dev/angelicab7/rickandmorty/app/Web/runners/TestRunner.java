@@ -5,8 +5,8 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"dev.angelicab7.rickandmorty.app.steps",
-                "dev.angelicab7.rickandmorty.app.hooks"},
+        glue = {"dev.angelicab7.rickandmorty.app.Web.steps",
+                "dev.angelicab7.rickandmorty.app.Web.hooks"},
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber.html",

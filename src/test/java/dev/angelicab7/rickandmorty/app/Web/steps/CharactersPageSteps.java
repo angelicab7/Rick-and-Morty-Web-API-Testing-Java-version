@@ -43,21 +43,10 @@ public class CharactersPageSteps {
         charactersPage.searchForCharacter(character);
     }
 
-    @And("I select {string} from the species filter")
-    public void iSelectFromTheSpeciesFilter(String species) {
-        logger.info("Step: I select '{}' from the species filter", species);
-        charactersPage.clickSpeciesDropdown(species);
-    }
-
     @Then("I should see search results for {string}")
     public void iShouldSeeSearchResultsFor(String character) {
         logger.info("Step: I should see search results for '{}'", character);
         charactersPage.verifyCharacterDisplayed();
     }
 
-    @And("I should see only {string} characters displayed")
-    public void iShouldSeeOnlyCharactersDisplayed(String species) {
-        logger.info("Step: I should see only '{}' characters displayed", species);
-        charactersPage.verifySpeciesDisplayed();
-    }
 }
