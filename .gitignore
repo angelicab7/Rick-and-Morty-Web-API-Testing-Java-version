@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Visual Regression Testing ###
+src/test/resources/visuals/current/
+src/test/resources/visuals/diffs/

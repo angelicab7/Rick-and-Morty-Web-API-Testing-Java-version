@@ -14,7 +14,7 @@ import io.cucumber.testng.CucumberOptions;
                 "junit:target/cucumber-reports/cucumber.xml"
         },
         monochrome = true,
-        tags = "@search_character"
+        tags = "@search_character or @visual_regression"
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 }

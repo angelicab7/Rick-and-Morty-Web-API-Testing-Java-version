@@ -13,7 +13,7 @@ public class HomePageSteps {
     private static final Logger logger = LoggerFactory.getLogger(HomePageSteps.class);
     private static final String BASE_URL = "https://angelicab7.github.io/BOG001-data-lovers/";
 
-    private HomePage homePage;
+    public HomePage homePage;
     private CharactersPage charactersPage;
 
     @Given("I am on the Rick and Morty web page")

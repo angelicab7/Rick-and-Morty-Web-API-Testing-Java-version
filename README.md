@@ -23,35 +23,33 @@ The project tests the [Rick and Morty API](https://rickandmortyapi.com/api) and 
 ## 📦 Project Structure
 
 ```
-src/
-├── main/
-│   └── java/dev/angelicab7/rickandmorty/app/
-│       ├── App.java
-│       └── Main.java
-└── test/
-    ├── java/dev/angelicab7/rickandmorty/app/
-    │   ├── API/
-    │   │   ├── CharactersTest.java
-    │   │   ├── LocationsTest.java
-    │   │   └── EpisodesTest.java
-    │   └── Web/
-    │       ├── runners/
-    │       │   └── TestRunner.java
-    │       ├── hooks/
-    │       │   └── Hooks.java
-    │       ├── pages/
-    │       │   ├── HomePage.java
-    │       │   └── CharactersPage.java
-    │       └── steps/
-    │           ├── HomePageSteps.java
-    │           └── CharactersPageSteps.java
-    └── resources/
-        ├── features/
-        │   └── search_character.feature
-        ├── logback-test.xml
-        └── testing.xml
-```
+src/test/
+├── java/
+│   └── dev/angelicab7/rickandmorty/app/
+│       └── Web/
+│           ├── hooks/
+│           │   └── Hooks.java
+│           ├── pages/
+│           │   ├── HomePage.java
+│           │   └── CharactersPage.java
+│           ├── runners/
+│           │   └── TestRunner.java
+│           ├── steps/
+│           │   ├── HomePageSteps.java
+│           │   ├── CharactersPageSteps.java
+│           │   └── VisualSteps.java
+│           └── utils/
+│               └── VisualRegression.java
+└── resources/
+    └── features/
+        ├── search_character.feature
+        └── visual_search.feature
 
+visuals/
+├── baseline/     # Baseline screenshots
+├── current/      # Current test screenshots
+└── diffs/  
+```
 ## 🧪 Test Suites
 
 ### API Tests
@@ -90,6 +88,23 @@ Web UI tests are organized using BDD with Cucumber:
   - HomePageSteps.java
   - CharactersPageSteps.java
 
+### Visual Tests
+Visual regression testing is implemented using **Java AWT BufferedImage** for pixel-by-pixel comparison
+
+- **Feature File**: visual_search.feature
+    - Verify home page visual stability
+    - Verify characters page layout consistency
+
+- **Page Objects**:
+    - HomePage.java
+    - CharactersPage.java
+
+- **Step Definitions**:
+    - VisualSteps.java
+
+- **Utilities**:
+    - VisualRegression.java
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -127,16 +142,36 @@ mvn test -P api-tests
 ```bash
 mvn test -P web-tests
 ```
-
-### Run All Tests
-```bash
-mvn test -P all-tests
-```
-
 ### Run Specific Test Class
 ```bash
 mvn clean test -Dcucumber.filter.tags="@search_and_filter"
 ```
+# Run only visual regression tests
+```bash
+mvn test -Dcucumber.filter.tags="@visual_regression"
+```
+# Run specific visual test
+```bash
+mvn test -Dcucumber.filter.tags="@visual_homepage"
+```
+# Run all tests including visual
+```bash
+mvn clean test
+```
+# First run - Creates baseline images:
+```bash
+mvn test -Dcucumber.filter.tags="@visual_homepage"
+```
+# Test will fail with message "BASELINE CREATED"
+Baseline images saved to visuals/baseline/
+
+# Subsequent runs - Compares against baseline:
+```bash
+mvn test -Dcucumber.filter.tags="@visual_homepage"
+```
+# If differences > 50 pixels → Test fails
+Diff images saved to visuals/diffs/
+
 
 ## 📊 Test Reports
 

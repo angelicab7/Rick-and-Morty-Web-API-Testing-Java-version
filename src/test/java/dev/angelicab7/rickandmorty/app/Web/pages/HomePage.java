@@ -1,6 +1,7 @@
 package dev.angelicab7.rickandmorty.app.Web.pages;
 
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.LoadState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +22,7 @@ public class HomePage {
     public void navigateTo(String url) {
         logger.info("Navigating to home page: {}", url);
         page.navigate(url);
-        page.waitForLoadState();
+        page.waitForLoadState(LoadState.LOAD);
     }
 
     public void verifyHomePage() {
